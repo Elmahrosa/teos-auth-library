@@ -33,3 +33,8 @@ jobs:
 
       - name: Build project
         run: npm run build --if-present
+      - name: Publish to GitHub Packages
+        if: success()
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
